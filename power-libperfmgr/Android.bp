@@ -49,7 +49,7 @@ cc_binary {
         "libdisppower-xiaomi-sdm845",
         "libperfmgr",
         "libprocessgroup",
-        "pixel-power-ext-V1-ndk_platform",
+        "xiaomi-power-ext-V1-ndk_platform",
     ],
     srcs: [
         "aidl/service.cpp",

@@ -46,9 +46,9 @@ namespace google {
 namespace hardware {
 namespace power {
 namespace impl {
-namespace pixel {
+namespace xiaomi {
 
-using ::aidl::google::hardware::power::impl::pixel::PowerHintSession;
+using ::aidl::google::hardware::power::impl::xiaomi::PowerHintSession;
 
 constexpr char kPowerHalStateProp[] = "vendor.powerhal.state";
 constexpr char kPowerHalAudioProp[] = "vendor.powerhal.audio";
@@ -305,7 +305,7 @@ ndk::ScopedAStatus Power::getHintSessionPreferredRate(int64_t *outNanoseconds) {
     return ndk::ScopedAStatus::ok();
 }
 
-}  // namespace pixel
+}  // namespace xiaomi
 }  // namespace impl
 }  // namespace power
 }  // namespace hardware

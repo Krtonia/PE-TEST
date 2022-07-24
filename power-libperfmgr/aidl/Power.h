@@ -32,7 +32,7 @@ namespace google {
 namespace hardware {
 namespace power {
 namespace impl {
-namespace pixel {
+namespace xiaomi {
 
 using ::aidl::android::hardware::power::Boost;
 using ::aidl::android::hardware::power::IPowerHintSession;
@@ -65,7 +65,7 @@ class Power : public ::aidl::android::hardware::power::BnPower {
     std::atomic<bool> mPathCached;
 };
 
-}  // namespace pixel
+}  // namespace xiaomi
 }  // namespace impl
 }  // namespace power
 }  // namespace hardware
