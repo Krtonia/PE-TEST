@@ -19,7 +19,7 @@ package org.lineageos.settings.thermal;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.SystemProperties;
+import android.os.FileUtils;
 import android.os.UserHandle;
 import android.util.Log;
 
@@ -57,8 +57,6 @@ public final class ThermalUtils {
 
     private static final String THERMAL_SCONFIG = "/sys/class/thermal/thermal_message/sconfig";
 
-    private static String mCurrentProfile;
-
     private SharedPreferences mSharedPrefs;
 
     protected ThermalUtils(Context context) {
@@ -66,12 +64,6 @@ public final class ThermalUtils {
     }
 
     public static void startService(Context context) {
-        mCurrentProfile = THERMAL_PROP_DEFAULT;
-        try {
-            mCurrentProfile = SystemProperties.get(VENDOR_THERMAL_PROP);
-        } catch (RuntimeException e) {
-            Log.e(TAG, "Failed to get " + VENDOR_THERMAL_PROP, e);
-        }
         context.startServiceAsUser(new Intent(context, ThermalService.class),
                 UserHandle.CURRENT);
     }
@@ -143,6 +135,14 @@ public final class ThermalUtils {
         }
 
         return state;
+    }
+
+    protected void setDefaultThermalProfile() {
+        try {
+            FileUtils.stringToFile(THERMAL_SCONFIG, THERMAL_STATE_DEFAULT);
+        } catch (IOException e) {
+            Log.e(TAG, "Failed to write to " + THERMAL_SCONFIG, e);
+        }
     }
 
     protected void setThermalProfile(String packageName) {
