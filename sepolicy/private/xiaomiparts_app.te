@@ -1,7 +1,12 @@
 type xiaomiparts_app, domain;
 typeattribute xiaomiparts_app mlstrustedsubject;
 
+type xiaomiparts_app, domain;
+
 app_domain(xiaomiparts_app)
+
+# Access standard Dirac Audio service
+allow xiaomiparts_app audioserver_service:service_manager find;
 
 # Access standard system services
 allow xiaomiparts_app app_api_service:service_manager find;
