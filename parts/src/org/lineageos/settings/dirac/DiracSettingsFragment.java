@@ -52,6 +52,7 @@ public class DiracSettingsFragment extends PreferenceFragment implements
         final ActionBar actionBar = getActivity().getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        DiracUtils.initialize();
         boolean enhancerEnabled = DiracUtils.isDiracEnabled(getActivity());
 
         mHeadsetType = (ListPreference) findPreference(PREF_HEADSET);

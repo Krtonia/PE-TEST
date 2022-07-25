@@ -25,11 +25,11 @@ protected static DiracSound mDiracSound;
 
     public static void initialize() {
         if (!mInitialized) {
-            mInitialized = true;
             mDiracSound = new DiracSound(0, 0);
             mDiracSound.setMusic(mDiracSound.getMusic());
             mDiracSound.setHeadsetType(mDiracSound.getHeadsetType());
             setLevel(getLevel());
+            mInitialized = true;
         }
     }
 
@@ -38,7 +38,7 @@ protected static DiracSound mDiracSound;
     }
 
     protected static boolean isDiracEnabled(Context context) {
-    return mDiracSound.getMusic() == 1;
+    return mDiracSound != null && mDiracSound.getMusic() == 1;
     }
 
     protected static void setLevel(String preset) {
